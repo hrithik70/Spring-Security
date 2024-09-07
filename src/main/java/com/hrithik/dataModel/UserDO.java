@@ -2,6 +2,8 @@ package com.hrithik.dataModel;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "USER")
 public class UserDO {
@@ -11,6 +13,10 @@ public class UserDO {
     private Long id;
     private String userName;
     private String password;
+    private LocalDateTime accountStartDt;
+    private LocalDateTime accountExpiryDt;
+    private Boolean isAccountLocked;
+    private String accountStatus;
 
     public Long getId() {
         return id;
@@ -34,5 +40,37 @@ public class UserDO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDateTime getAccountStartDt() {
+        return accountStartDt;
+    }
+
+    public void setAccountStartDt(LocalDateTime accountStartDt) {
+        this.accountStartDt = accountStartDt;
+    }
+
+    public LocalDateTime getAccountExpiryDt() {
+        return accountExpiryDt;
+    }
+
+    public void setAccountExpiryDt(LocalDateTime accountExpiryDt) {
+        this.accountExpiryDt = accountExpiryDt;
+    }
+
+    public Boolean getAccountLocked() {
+        return isAccountLocked;
+    }
+
+    public void setAccountLocked(Boolean accountLocked) {
+        isAccountLocked = accountLocked;
+    }
+
+    public String getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
     }
 }
