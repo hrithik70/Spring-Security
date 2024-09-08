@@ -5,6 +5,7 @@ import com.hrithik.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,8 @@ public class UserService {
     public UserDO save(UserDO userDO) {
         try{
             userDO.setAccountStartDt(LocalDateTime.now());
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(5);
+            userDO.setPassword(passwordEncoder.encode(userDO.getPassword()));
             return userRepository.save(userDO);
         }catch (Exception e)
         {

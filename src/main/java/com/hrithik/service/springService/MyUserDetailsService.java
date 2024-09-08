@@ -1,6 +1,5 @@
 package com.hrithik.service.springService;
 
-import com.hrithik.dataModel.LogginUserDetails;
 import com.hrithik.dataModel.UserDO;
 import com.hrithik.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
