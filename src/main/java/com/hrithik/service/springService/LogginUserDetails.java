@@ -57,9 +57,12 @@ public class LogginUserDetails implements UserDetails {
     }
 
     public boolean checkAccountExpiry(UserDO userDO) {
-        if (userDO.getAccountStartDt() != null)
+        if (userDO.getAccountExpiryDt() != null)
+        {
+            LOGGER.info("******** User Account Expiry : [{}] ********** " , userDO.getAccountStartDt().isBefore(userDO.getAccountExpiryDt()));
             return userDO.getAccountStartDt().isBefore(userDO.getAccountExpiryDt());
-        LOGGER.info("******** User Account Expiry : [{}] ********** " ,userDO.getAccountStartDt().isBefore(userDO.getAccountExpiryDt()));
+        }else
+            LOGGER.info("***** User Account Expiry Date : [{}] ***** " , userDO.getAccountExpiryDt());
         return false;
     }
 
